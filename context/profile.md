@@ -1,104 +1,113 @@
 # Company Profile
 
-*High-level context about your company, product, and GTM motion. This is the first thing Claude reads when working on anything in this repo.*
-
-*See example: `examples/sample-company/context/profile.md`*
-
 ---
 
 ## The Company
 
-**Name:** [Company]
-**Founded:** [Year]
-**HQ:** [City, Country]
-**Website:** [domain.com]
+**Name:** Dost
+**Founded:** 2021
+**HQ:** Barcelona, Spain (+ London, UK office opened Nov 2025)
+**Website:** dost.io
 
 **What we do:**
-[2–3 sentences. What problem you solve, for whom, and how. Write this as you'd say it to a peer at a conference — no marketing language.]
+Dost automates invoice and supplier delivery note processing for mid-market finance teams. We capture, extract, match, and route invoices end-to-end — replacing manual AP/AR workflows that take days with a process that takes minutes. We sell to CFOs and finance managers who are drowning in invoice volume and can't afford to hire their way out of it.
 
 **What makes us different:**
-[1–2 sentences. The specific reason customers choose you over alternatives.]
+Proprietary AI trained specifically on complex financial documents — not generic OCR bolted onto a workflow tool. We're the only platform that handles both AP and AR in a single unified flow, with European e-invoicing compliance (Verifactu) built in.
 
 ---
 
 ## Product
 
-**Core product:** [Product name and one-line description]
+**Core product:** AI-powered invoice and document automation — captures, extracts, matches, and routes AP/AR documents through a unified platform.
 
 **Key capabilities:**
-- [Capability 1]
-- [Capability 2]
-- [Capability 3]
+- AI document capture and data extraction (95% accuracy) from invoices and delivery notes
+- 3-way matching: PO ↔ invoice ↔ delivery note reconciliation
+- Customizable approval workflows with audit trails
+- Supplier and client self-service portals
+- Real-time AP/AR analytics and cash flow dashboards
+- Verifactu and EU e-invoicing compliance
+- Native ERP integrations
 
-**Pricing model:** [Per seat / Usage-based / Flat / Freemium + paid tiers]
-**Free tier or trial:** [Yes/No — details]
+**Pricing model:** Demo-required enterprise pricing (no self-serve or public tiers)
+**Free tier or trial:** No
 
 **Integrations that matter for GTM:**
-- [Integration A] — [why it matters for the buying conversation]
-- [Integration B] — [why it matters]
+- **SAP** — signals enterprise-grade complexity and budget; common in manufacturing/logistics ICP
+- **NetSuite** — signals post-Series A finance maturity; common in retail and food ICP
+- **Microsoft Dynamics** — common in mid-market manufacturing and construction
+- **Sage** — common among mid-market companies in UK and Spain
 
 ---
 
 ## GTM Motion
 
-**Primary motion:** [Sales-led / PLG / PLG + Sales]
-**Typical deal flow:** [e.g., "Inbound trial → SDR qualify → AE demo → 14-day POC → close"]
-**ACV range:** [$X – $Y]
-**Sales cycle:** [X days median]
-**Expansion motion:** [How you grow accounts after close]
+**Primary motion:** Sales-led
+**Typical deal flow:** Outbound/inbound → demo → POC or pilot → close
+**ACV range:** [inferred: €15,000–€80,000 depending on invoice volume and company size]
+**Sales cycle:** [inferred: 30–90 days]
+**Expansion motion:** Volume-based expansion as clients onboard additional invoice types, entities, or workflows
 
 ---
 
 ## Team
 
-**GTM team size:** [X people]
-**CRO / Head of Sales:** [Name, if relevant context]
-**Key GTM contacts:**
+**GTM team size:** [inferred: 5–10 people across Spain and UK]
+**CEO:** Adam Barbera (relocated to London for UK expansion)
+**Key founders:**
 
 | Name | Title | Owns |
 |------|-------|------|
-| [Name] | [Title] | [Area] |
-| [Name] | [Title] | [Area] |
+| Adam Barbera | CEO | GTM, UK expansion |
+| Naqqash Abassi | CTO | Product, AI/ML |
+| Fernando Martín | COO | Operations, Spain market |
 
 ---
 
 ## Current GTM Priorities
 
-*Update monthly. Shapes how Claude prioritizes tasks.*
-
 **This quarter's focus:**
-1. [Priority 1]
-2. [Priority 2]
-3. [Priority 3]
+1. UK market launch — new London office, building pipeline in manufacturing, construction, logistics
+2. Spain market expansion — upselling existing 150+ customer base, adding Verifactu compliance angle
+3. ICP refinement — identifying which verticals convert fastest in UK vs. Spain
 
 **Key campaigns active:**
-- [Campaign name] — [targeting X accounts, launched Y date]
+- UK launch outbound — targeting Finance Managers at 200–1,500-employee manufacturers and logistics companies
 
 **Blockers:**
-- [What's slowing GTM down right now]
+- [inferred: Limited UK brand recognition; need reference customers in British market]
 
 ---
 
 ## Market Context
 
-**Category:** [How you'd describe your category]
-**Market size:** [TAM estimate if known]
-**Key trends driving demand:** [2–3 tailwinds]
+**Category:** AP/AR automation / Invoice processing software
+**Market size:** European AP automation market estimated at €2–3B+ TAM
+**Key trends driving demand:**
+- EU and Spain Verifactu/mandatory e-invoicing regulations creating compliance urgency
+- Finance teams unable to scale headcount proportionally with invoice volume growth
+- ERP modernization (SAP S/4HANA migrations, NetSuite adoptions) opening adjacent automation budget
 
 **Primary competitors:**
+
 | Competitor | Their strength | Our edge |
 |------------|---------------|----------|
-| [Name] | [What they're good at] | [Why we win] |
-| [Name] | [What they're good at] | [Why we win] |
-| [Name] | [What they're good at] | [Why we win] |
+| Yooz | European mid-market presence, broad ERP integrations | Proprietary AI (not OCR), combined AP+AR in one platform |
+| Rossum | Strong AI document intelligence, developer-friendly | Simpler to implement, finance-team-native UX, AP+AR unified |
+| Medius | Deep AP workflow automation, enterprise feature set | Better fit for mid-market, faster implementation, European compliance |
+| Basware | Global enterprise scale, e-invoicing network | More affordable, agile implementation, not overbuilt for mid-market |
 
 ---
 
 ## Reference Customers
 
-*Customers Claude can reference in outreach (with permission) or use as proof of ICP fit.*
-
 | Customer | Industry | Why they bought | Can reference publicly? |
 |----------|----------|----------------|------------------------|
-| [Name] | [Industry] | [Key use case] | [Yes / Anonymize] |
-| [Name] | [Industry] | [Key use case] | [Yes / Anonymize] |
+| VICIO | Food / restaurant chain | Reduced invoice processing from 9 days to 3 days | Yes |
+| Housfy | Proptech / real estate | Overhauled approval workflows across entities | Yes |
+| IASO | Healthcare | Digitized document capture without changing internal processes | Yes |
+| Primaprix | Discount retail | High-volume supplier invoice automation | Yes |
+| Synergym | Fitness / gyms | Multi-location AP consolidation | Yes |
+| Solarprofit | Renewable energy | Supplier delivery note matching | Yes |
+| Metropolitan | Fitness / gyms | AP automation across locations | Yes |

@@ -1,16 +1,10 @@
 # Signal Library
 
-*Signals are observable events that predict pipeline conversion 30–90 days in advance. This library is the source of truth for all signal-based outreach. Every campaign in this repo traces back to at least one signal here.*
-
-Last updated: [YYYY-MM-DD]
-
-*See example: `examples/sample-company/context/signal-library.md`*
+Last updated: 2026-04-20
 
 ---
 
 ## Signal Scoring Model
-
-Accounts accumulate points as signals fire. Thresholds determine outreach intensity.
 
 | Score | Tier | Action |
 |-------|------|--------|
@@ -23,107 +17,130 @@ Accounts accumulate points as signals fire. Thresholds determine outreach intens
 
 ## Tier 1 Signals — Act Immediately
 
-*High predictive power. When a Tier 1 signal fires: alert within 2 hours, research within 24 hours, outreach within 48 hours.*
+### Signal: ERP Go-Live or Upgrade Announced
 
-### Signal: [Signal Name]
-**Category:** [Firmographic / Technographic / Behavioral / Organizational / Intent]
-**Points:** [30–40]
-**Source:** [Clay / LinkedIn / Crunchbase / Custom / etc.]
-**Refresh cadence:** [Real-time / Daily / Weekly]
+**Category:** Technographic / Organizational
+**Points:** 40
+**Source:** LinkedIn company posts, LinkedIn job postings, Crunchbase news, Google alerts
+**Refresh cadence:** Weekly
 
-**Definition:** [Exactly what event or attribute constitutes this signal]
+**Definition:** Company announces completion of or active migration to SAP S/4HANA, NetSuite, Microsoft Dynamics 365, or Sage implementation. Includes job postings requiring "SAP implementation experience" or "post go-live support."
 
-**Why it predicts fit:** [The causal logic — why does this event correlate with buying intent?]
+**Why it predicts fit:** ERP go-lives create an immediate evaluation window for adjacent automation tools. Finance teams have just finished a major project and are now looking to extract value — AP automation is the next logical spend. Pain is at its peak: manual processes are fully visible in the new system.
 
 **Detection method:**
 ```
-[How to detect it — Clay formula, API, manual check, etc.]
+Clay: LinkedIn company posts → keyword filter ["SAP go-live", "NetSuite implementation", "Dynamics 365 launch", "new ERP", "digital transformation finance"]
+LinkedIn: Job posts from finance team mentioning ERP + automation skills in last 30 days
+Google Alert: "[company name] + ERP + implementation"
 ```
 
-**Message hook:** [The one-liner that references this signal in outreach, e.g., "Saw you raised your Series B last week — congrats."]
+**Message hook:** "Saw [Company] went live on [ERP] — congrats on the rollout. Most finance teams find this is exactly when manual invoice handling becomes the next thing to fix."
 
 ---
 
-### Signal: [Signal Name]
-**Category:** [Category]
-**Points:** [30–40]
-**Source:** [Source]
-**Refresh cadence:** [Cadence]
+### Signal: Hiring for AP/AR or Accounting Leadership Role
 
-**Definition:** [Definition]
+**Category:** Organizational
+**Points:** 35
+**Source:** LinkedIn Jobs, Clay
+**Refresh cadence:** Daily
 
-**Why it predicts fit:** [Logic]
+**Definition:** Company posts an open role for any of: Accounts Payable Manager, Head of Accounting, Treasury Manager, Finance Operations Manager, AP Specialist, AR Specialist, Financial Controller. Role has been open 15+ days.
+
+**Why it predicts fit:** A company hiring for manual AP/AR roles is explicitly signaling that invoice volume has outgrown current capacity. This is the exact moment a CFO is weighing "hire vs. automate." We arrive when the question is live — not after it's been answered by a new hire who now defends their job by resisting automation.
 
 **Detection method:**
 ```
-[Method]
+Clay: LinkedIn Jobs → filter by title ["accounts payable", "AP manager", "AR specialist", "treasury", "head of accounting"] + company firmographic filters (size, industry, geo)
+Apollo: similar job title + company filters
+Refresh: daily scan, flag if open >15 days
 ```
 
-**Message hook:** [Hook]
+**Message hook:** "Noticed [Company] is looking for an AP Manager — that search usually means invoice volume is outpacing the team. Worth a 15-minute call to see if we can solve it without the hire?"
+
+---
+
+### Signal: Funding Round Announced (Seed or Later)
+
+**Category:** Firmographic
+**Points:** 30
+**Source:** Crunchbase, LinkedIn, TechCrunch, EU-Startups
+**Refresh cadence:** Real-time (alert-based)
+
+**Definition:** ICP-fit company announces a funding round of €1M+ within the last 30 days. Applies to Seed through Series B; Series C+ may indicate enterprise motion that diverges from our sweet spot.
+
+**Why it predicts fit:** Post-funding, CFOs unlock digitization budgets. Finance infrastructure investment spikes in the 90 days after a round as companies professionalize. The CFO is accountable to investors for operational efficiency — AP automation is a visible, fast-ROI win.
+
+**Detection method:**
+```
+Crunchbase: set up saved search + email alert for funding events → filter by industry + geography
+LinkedIn: monitor "we're thrilled to announce" posts in company feed
+Clay: Crunchbase funding enrichment on account list, flag if funded_date < 30 days ago
+```
+
+**Message hook:** "Congrats on the raise — finance teams at this stage usually hit an inflection point where invoice volume starts to outpace the team. Happy to show you how [similar company] cut processing time by 80% right after their Series A."
 
 ---
 
 ## Tier 2 Signals — Add to Active Sequences
 
-*Moderate predictive power. Use to prioritize within existing sequences or trigger lighter outreach.*
+### Signal: Verifactu / E-Invoicing Compliance Mention
 
-### Signal: [Signal Name]
-**Category:** [Category]
-**Points:** [15–25]
-**Source:** [Source]
+**Category:** Behavioral / Regulatory
+**Points:** 20
+**Source:** LinkedIn posts, company blog, Google alerts
+**Refresh cadence:** Weekly
 
-**Definition:** [Definition]
+**Definition:** Spanish company mentions Verifactu, AEAT compliance, or mandatory e-invoicing in company communications, job postings, or press in last 60 days.
 
-**Why it predicts fit:** [Logic]
+**Why it predicts fit:** Spain's Verifactu mandate creates an external compliance deadline that forces finance teams to evaluate their invoice handling infrastructure. It's a regulatory forcing function — companies can no longer delay digitization. We have compliance built-in.
 
 ---
 
-### Signal: [Signal Name]
-**Category:** [Category]
-**Points:** [15–25]
-**Source:** [Source]
+### Signal: Multi-Location or International Expansion Announcement
 
-**Definition:** [Definition]
+**Category:** Organizational / Firmographic
+**Points:** 20
+**Source:** LinkedIn, press releases, company blog
+**Refresh cadence:** Weekly
 
-**Why it predicts fit:** [Logic]
+**Definition:** Company announces opening of new offices, entering a new country, or acquiring another entity in the last 60 days. Or job postings show hiring in a new geography.
+
+**Why it predicts fit:** Multi-entity expansion multiplies invoice complexity — new supplier relationships, new currencies, new approval hierarchies. Companies that just expanded are immediately aware that their existing AP process doesn't scale across entities.
 
 ---
 
 ## Tier 3 Signals — Monitor
 
-*Weak signals on their own. Valuable in combination with Tier 1 or 2 signals.*
-
-- [Signal name] (+5 pts) — [One-line description]
-- [Signal name] (+5 pts) — [One-line description]
-- [Signal name] (+5 pts) — [One-line description]
+- **Tech stack includes Excel or Google Sheets for AP** (+5 pts) — visible in job postings; signals fully manual process
+- **Finance team grew by 2+ people in last 6 months** (+5 pts) — LinkedIn headcount signal; volume growing faster than automation
+- **G2 intent signal for AP automation category** (+5 pts) — if using G2 Buyer Intent; indicates active evaluation
+- **CEO or CFO posted about operational efficiency or scaling** (+5 pts) — LinkedIn behavioral signal; mindset aligned
 
 ---
 
 ## Signal Combinations
 
-*Certain combinations of signals are stronger predictors than any single signal.*
-
 | Combination | Combined Score | What it means | Action |
 |-------------|----------------|---------------|--------|
-| [Signal A] + [Signal B] | +[X] bonus | [Interpretation] | [What to do] |
-| [Signal A] + [Signal C] | +[X] bonus | [Interpretation] | [What to do] |
+| Funding Round + AP Hiring | +15 bonus (total: 65) | Budget just unlocked AND pain is confirmed today | AE alert immediately, skip SDR qualification |
+| ERP Go-Live + AP Hiring | +20 bonus (total: 75) | System is in place AND team is at capacity | Priority Tier 1 outreach within 24 hours |
+| Funding Round + Multi-Location Expansion | +10 bonus (total: 60) | Growth-stage company scaling AP complexity | Executive-led outreach, lead with multi-entity case study |
+| Verifactu mention + ERP mention | +15 bonus (total: 55 for Spain accounts) | Regulatory urgency + systems in motion | Compliance-led sequence, deadline-anchored messaging |
 
 ---
 
 ## Suppression Rules
 
-*Signals that should pause or cancel outreach regardless of score.*
-
 - Account is an existing customer → suppress all outreach
 - Contact has unsubscribed in last 90 days → suppress email
 - Active opportunity in CRM → suppress automated sequences
-- [Custom rule] → [Action]
+- Account is in Basware or Medius contract (if known) → suppress for 6 months
 
 ---
 
 ## Signal Decay
-
-Signal scores reduce over time. A signal from 150 days ago is not the same as one from 10 days ago — score them differently.
 
 | Signal age | Score multiplier |
 |------------|-----------------|
@@ -133,15 +150,16 @@ Signal scores reduce over time. A signal from 150 days ago is not the same as on
 | 91–180 days | 25% |
 | 180+ days | 0% (signal expires) |
 
-Run a weekly batch to recalculate scores with decay applied. Accounts that drop below tier thresholds are downgraded automatically. Without decay, your active list quietly fills with accounts that were relevant six months ago and aren't anymore.
+Run a weekly batch to recalculate scores with decay applied.
 
 ---
 
 ## Signal Performance Log
 
-*Track which signals are actually generating pipeline. Update after every campaign.*
-
 | Signal | Outreach sent | Replies | Meetings | Pipeline | Notes |
 |--------|--------------|---------|----------|----------|-------|
-| [Signal A] | | | | | |
-| [Signal B] | | | | | |
+| ERP Go-Live | | | | | |
+| AP/AR Hiring | | | | | |
+| Funding Round | | | | | |
+| Verifactu Mention | | | | | |
+| Multi-Location Expansion | | | | | |
